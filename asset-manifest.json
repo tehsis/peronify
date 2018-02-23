@@ -1,8 +1,10 @@
 {
-  "main.css": "static/css/main.e1c454dc.css",
-  "main.css.map": "static/css/main.e1c454dc.css.map",
-  "main.js": "static/js/main.ff553709.js",
-  "main.js.map": "static/js/main.ff553709.js.map",
+  "main.css": "static/css/main.e7e8b1ac.css",
+  "main.css.map": "static/css/main.e7e8b1ac.css.map",
+  "main.js": "static/js/main.3ec7c47c.js",
+  "main.js.map": "static/js/main.3ec7c47c.js.map",
+  "static/media/evita.jpg": "static/media/evita.d01bfb0f.jpg",
   "static/media/logo.svg": "static/media/logo.5d5d9eef.svg",
+  "static/media/peron.mp3": "static/media/peron.bcb495fa.mp3",
   "static/media/peronizador.png": "static/media/peronizador.2b9a813c.png"
 }
