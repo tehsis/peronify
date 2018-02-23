@@ -1,4 +1,18 @@
 body {
-  background-image: url('./evita.jpg');
-  background-repeat: repeat;
+	background-image: url('./peron.jpg');
+	background-repeat: no-repeat;
+	background-color: #0D0B0E;
+	color: #fff;
+	background-position: 50% 50%;
+}
+
+
+.container.ev {
+	margin-top: 500px;
+}
+
+.instrucciones {
+	margin: 23px 0px;
+	font-size: 12px;
+	color: #eee;
 }

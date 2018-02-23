@@ -103,7 +103,6 @@ class App extends Component {
             <input className="custom-file-input" type="file" onChange={ this.imageSelected } />
           </div>
           </div>
-
         </form>
         </div>
         </div>
@@ -115,6 +114,13 @@ class App extends Component {
             </div>
           </div>
         </div>
+	<div class="instrucciones">
+	  <ul>
+	    <li>Subí una imagen antes del rayo peronizador</li>
+	    <li>Volve a subir otra imagen después del rayo peronificador</li>
+	    <li>Disfruta del poder </li>
+          </ul>
+	</div>
       </div>
     );
   }
