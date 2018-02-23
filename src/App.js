@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import merge from 'merge-images';
 import './App.css';
 
-import peronizador from './peronizador.png'
+import peronizador from './peronizador.png';
+import peronAudio from './peron.mp3';
 
 const baseSize = 512;
 
@@ -13,7 +14,8 @@ class App extends Component {
     super();
     this.imageSelected = this.imageSelected.bind(this);
     this.onImageLoad = this.onImageLoad.bind(this);
-    this.state = {images: [], images_formated: [], peron: []};
+    this.onPeronLoad = this.onPeronLoad.bind(this);
+    this.state = {images: [], images_formated: [], peron: null};
 
     this.reader = new FileReader();
   }
@@ -21,6 +23,12 @@ class App extends Component {
   imageSelected(e) {
     const file = e.target.files[0];
     this.reader.readAsDataURL(file);
+  }
+
+  onPeronLoad() {
+    const audio = new Audio(peronAudio);
+    audio.play();
+    setTimeout(audio.stop, 3000);
   }
 
   async peronify() {
@@ -34,7 +42,7 @@ class App extends Component {
     });
 
     this.setState((prev) => {
-      prev.peron = [peronify];
+      prev.peron = peronify;
       return prev;
     })
   }
@@ -68,15 +76,45 @@ class App extends Component {
     }, false);  }
 
   render() {
+    const progressWidth = (100 / 2) * this.state.images_formated.length;
+    const instructionText = this.state.images_formated.length == 0 
+      ? 'Elegir imagen antes de Peron'
+      : 'Elegir imagen despues de Peron'
+
+    if (this.state.peron) {
+      return <div className="text-center">
+        <a href={this.state.peron}>
+          <img onLoad={ this.onPeronLoad } alt="peron" src={this.state.peron} />
+        </a>
+        </div>
+    }
+
     return (
-      <div className="App">
-        <p className="App-intro">
-        <input type="file" onChange={ this.imageSelected } /> <br />
+      <div className="container ev">
+        <div className="row">
         { this.state.images.map((image, i) => <img alt='' style={{display: 'none'}} onLoad={ this.onImageLoad } src={image} key={i} />) }
         { this.state.images_formated.map((image, i) => <img alt='' style={{display: 'none'}} src={image} key={i} />) }
 
-        { this.state.peron.map((image, i) => <img alt="" src={image} key={i} />) }
-        </p>
+        <div className="col">
+        <form>
+          <div class="input-group mb-3">
+          <div className="custom-file">
+            <label className="custom-file-label">{instructionText}</label>
+            <input className="custom-file-input" type="file" onChange={ this.imageSelected } />
+          </div>
+          </div>
+
+        </form>
+        </div>
+        </div>
+        <br />
+        <div className="row">
+          <div className="col">
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style={{width: progressWidth + '%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

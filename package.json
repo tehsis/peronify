@@ -16,9 +16,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage" : "http://tehsis.github.io/peronify",
+  "homepage": "http://tehsis.github.io/peronify",
   "devDependencies": {
     "gh-pages": "^1.1.0"
   }
-  
 }
